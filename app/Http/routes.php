@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+     return view('welcome');
+    
+
 });
+	// mia modifica
+	Route::resource('partecipants', 'PartecipantsController');
