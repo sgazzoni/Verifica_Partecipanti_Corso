@@ -8,7 +8,7 @@
 </div>
 <div class="form-group">
 	{!! Form::label('telefono', 'Telefono') !!}
-	{!! Form::text('name', null, ['class' => 'form-control']) !!}
+	{!! Form::text('telefono', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -19,10 +19,7 @@
 	{!! Form::email('email', null, ['class' => 'form-control', 'readonly' => true]) !!}
 	@endif
 </div>
-<div class="form-group">
-	{!! Form::label('password', 'Password') !!}
-	{!! Form::password('password', ['class' => 'form-control']) !!}
-</div>
+
 <div class="form-group">
 	{!! Form::submit($submitButtonText, ['class' => 'btn btn-primary form-control']) !!}
 </div>

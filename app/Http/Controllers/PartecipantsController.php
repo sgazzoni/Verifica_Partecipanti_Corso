@@ -8,6 +8,8 @@ use App\Partecipant;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PartecipantsRequest;
+use Illuminate\Http\JsonResponse;
+use App\Http\Requests\PartecipantRequest;
 
 class PartecipantsController extends Controller
 {
@@ -46,20 +48,20 @@ class PartecipantsController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Partecipants $request)
+    public function store(PartecipantRequest $request)
     {
         $input = $request->all();
-		$partecipants = Partecipants::create([
+		$partecipant = Partecipant::create([
             'nome' => $input['nome'],
 			'cognome' => $input['cognome'],
 			'email' => $input['email'],
-			'telefono' => $input['telefono'],				
+			'telefono' => $input['telefono'],		
 				
                         
         ]);
 		
 		if ($request->ajax() || $request->wantsJson()) {
-    		return new JsonResponse($partecipants);
+    		return new JsonResponse($partecipant);
     	}
 		
 		flash()->success('salvato con successo!');
@@ -73,9 +75,9 @@ class PartecipantsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show(Partecipants $partecipants)
+    public function show(Partecipant $partecipant)
     {
-		return view('partecipants.show', compact('partecipants'));
+		return view('partecipants.show', compact('partecipant'));
     }
 
     /**
@@ -84,9 +86,9 @@ class PartecipantsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit(Partecipants $partecipants)
+    public function edit(Partecipant $partecipant)
     {
-		return view('partecipants.edit', compact('partecipants'));
+		return view('partecipants.edit', compact('partecipant'));
     }
 
     /**
@@ -96,10 +98,10 @@ class PartecipantsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(PartecipantsRequest $request, Partecipants $partecipants)
+    public function update(PartecipantRequest $request, Partecipant $partecipant)
     {
 		$input = $request->all();
-		$partecipants->update([
+		$partecipant->update([
             'nome' => $input['nome'],
 			'cognome' => $input['cognome'],
 			'email' => $input['email'],
@@ -109,7 +111,7 @@ class PartecipantsController extends Controller
 		
 		
 		if ($request->ajax() || $request->wantsJson()) {
-    		return new JsonResponse($partecipants);
+    		return new JsonResponse($partecipant);
     	}
 		
 		flash()->success('aggiornato con successo!');
@@ -123,11 +125,11 @@ class PartecipantsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy(Request $request, Partecipants $partecipants)
+    public function destroy(Request $request, Partecipant $partecipant)
     {
-        $partecipants->delete();
+        $partecipant->delete();
         if ($request->ajax() || $request->wantsJson()) {
-        	return new JsonResponse($partecipants);
+        	return new JsonResponse($partecipant);
         }
         return redirect('partecipants');
     }

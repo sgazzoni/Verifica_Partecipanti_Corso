@@ -27,7 +27,7 @@ class PartecipantRequest extends Request
 			'nome' => ['required', 'max:255'],
 			'cognome' => ['required', 'max:255'],   		
      		
-            'email' => ['required', 'email', 'unique:users' . ($this->method() == 'POST' ? '' : (',email,' . $this->route('users')->id))],
+            'email' => ['required', 'email', 'unique:partecipants' . ($this->method() == 'POST' ? '' : (',email,' . $this->route('partecipants')->id))],
        		'telefono' => ['required', 'max:20'],		
         
             //

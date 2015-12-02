@@ -27,8 +27,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         //
     	// versione modificata
-    	$router->bind('partecipant', function($id) {
-    		return \App\Partecipants::where($id)->firstOrFail();
+    	// prendo dalla richiesta fatta su url "http://laravel.app/partecipants/1", l'id = id selezionato
+    	$router->bind('partecipants', function($id) {
+    		return \App\Partecipant::where('id', $id)->firstOrFail();
     	});
 
         parent::boot($router);

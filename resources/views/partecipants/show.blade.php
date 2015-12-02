@@ -1,11 +1,11 @@
 @extends('app')
 
 @section('title')
-{{$partecipant->name}}
+{{$partecipant->nome}}
 @stop
 
 @section('content')
-<h1>{{$partecipant->name}}</h1>
+<h1>{{$partecipant->nome}}</h1>
 <ul>
 	<li>{{$partecipant->cognome}}</li>
     <li>{{$partecipant->email}}</li>		
